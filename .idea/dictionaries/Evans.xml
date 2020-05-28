@@ -2,6 +2,7 @@
   <dictionary name="Evans">
     <words>
       <w>coroutines</w>
+      <w>upsert</w>
     </words>
   </dictionary>
 </component>
