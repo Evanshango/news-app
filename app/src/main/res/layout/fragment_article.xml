@@ -6,14 +6,35 @@
     android:layout_height="match_parent"
     tools:context=".ui.fragments.ArticleFragment">
 
-    <TextView
-        android:layout_width="wrap_content"
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/news_article_toolbar"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:text="@string/article_fragment"
-        android:textSize="22sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:titleTextColor="@android:color/black"
+        app:titleTextAppearance="@style/TextAppearance.AppCompat.Small"
+        android:background="@drawable/white_grey_border_bottom"/>
+
+    <WebView
+        android:id="@+id/web_view"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/news_article_toolbar" />
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/save_article"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="16dp"
+        android:theme="@style/AppTheme.WhiteAccent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:src="@drawable/ic_save_news"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

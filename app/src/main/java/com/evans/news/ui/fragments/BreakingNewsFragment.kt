@@ -3,8 +3,10 @@ package com.evans.news.ui.fragments
 import android.os.Bundle
 import android.view.View
 import android.view.View.VISIBLE
+import androidx.core.os.bundleOf
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.evans.news.R
 import com.evans.news.adapters.NewsAdapter
@@ -66,6 +68,11 @@ class BreakingNewsFragment : Fragment(R.layout.fragment_breaking_news),
     }
 
     override fun onItemClicked(article: Article) {
-        requireContext().toast("clicked ${article.title}")
+        val bundle = Bundle()
+        bundle.putSerializable("article", article)
+        findNavController().navigate(
+            R.id.action_breakingNewsFragment_to_articleFragment,
+            bundle
+        )
     }
 }

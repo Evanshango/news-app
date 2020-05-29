@@ -3,8 +3,10 @@ package com.evans.news.ui.fragments
 import android.os.Bundle
 import android.view.View
 import androidx.appcompat.widget.SearchView
+import androidx.core.os.bundleOf
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.evans.news.R
 import com.evans.news.adapters.NewsAdapter
@@ -82,8 +84,8 @@ class SearchNewsFragment : Fragment(R.layout.fragment_search_news),
 
     private fun performSearch(query: String?) {
        query?.let {
-           if (query.trim().isNotEmpty()){
-               viewModel.searchNews(query.toString())
+           if (it.trim().isNotEmpty()){
+               viewModel.searchNews(it)
            }
        }
     }
@@ -106,6 +108,10 @@ class SearchNewsFragment : Fragment(R.layout.fragment_search_news),
     }
 
     override fun onItemClicked(article: Article) {
-        requireContext().toast("clicked ${article.title}")
+        val bundle = bundleOf("article" to article)
+        findNavController().navigate(
+            R.id.action_searchNewsFragment_to_articleFragment,
+            bundle
+        )
     }
 }

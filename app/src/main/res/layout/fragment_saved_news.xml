@@ -6,14 +6,25 @@
     android:layout_height="match_parent"
     tools:context=".ui.fragments.SavedNewsFragment">
 
-    <TextView
-        android:layout_width="wrap_content"
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/search_news_toolbar"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:text="@string/saved_news"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:title="@string/saved_news"
+        app:titleTextColor="@android:color/black"
+        app:titleTextAppearance="@style/TextAppearance.AppCompat.Medium"
+        android:background="@drawable/white_grey_border_bottom"/>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/saved_news_recycler"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        android:textSize="22sp"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/search_news_toolbar" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
