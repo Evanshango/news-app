@@ -43,7 +43,7 @@ class NewsAdapter(
                 Glide.with(context).load(article.urlToImage).into(itemView.article_image)
                 itemView.article_title.text = article.title
                 itemView.article_description.text = article.description
-                pref += article.source.name
+                pref += article.source!!.name
                 itemView.article_source.text = pref
 
                 itemView.article_publish_date.text = getFormattedDate(article.publishedAt)
