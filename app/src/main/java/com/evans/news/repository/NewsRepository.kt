@@ -7,10 +7,10 @@ import com.evans.news.models.Article
 class NewsRepository(private val db: ArticleDatabase) {
     
     suspend fun getBreakingNews(countryCode: String, pageNumber: Int) =
-        RetroClient.api.getBreakingNews(countryCode, pageNumber)
+        RetroClient.apiClient.getBreakingNews(countryCode, pageNumber)
 
     suspend fun searchNews(searchQuery: String, pageNumber: Int) =
-        RetroClient.api.searchNews(searchQuery, pageNumber)
+        RetroClient.apiClient.searchNews(searchQuery, pageNumber)
 
     suspend fun upsert(article: Article) = db.getArticleDao().upsert(article)
 

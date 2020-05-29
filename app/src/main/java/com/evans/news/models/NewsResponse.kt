@@ -1,6 +1,5 @@
 package com.evans.news.models
 
-import com.evans.news.models.Article
 import com.google.gson.annotations.SerializedName
 
 data class NewsResponse(

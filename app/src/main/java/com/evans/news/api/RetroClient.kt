@@ -21,7 +21,7 @@ class RetroClient {
                 .build()
         }
 
-        val api by lazy {
+        val apiClient: NewsApi by lazy {
             retrofit.create(NewsApi::class.java)
         }
     }
