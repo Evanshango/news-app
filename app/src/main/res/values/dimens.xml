@@ -1,4 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <dimen name="small_txt">10sp</dimen>
+    <dimen name="smaller_txt">9sp</dimen>
 </resources>

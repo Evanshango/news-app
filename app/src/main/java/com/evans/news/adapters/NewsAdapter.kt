@@ -10,6 +10,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.evans.news.R
 import com.evans.news.models.Article
+import com.evans.news.utils.Constants.Companion.getFormattedDate
 import kotlinx.android.synthetic.main.news_item.view.*
 
 class NewsAdapter(
@@ -30,14 +31,22 @@ class NewsAdapter(
 
     override fun getItemCount(): Int = differ.currentList.size
 
-    inner class ArticleHolder(itemView: View, private val interaction: ArticleInteraction?
+    inner class ArticleHolder(
+        itemView: View, private val interaction: ArticleInteraction?
     ) : RecyclerView.ViewHolder(itemView), View.OnClickListener {
+        init {
+            itemView.setOnClickListener(this)
+        }
         fun bind(article: Article?) {
+            var pref = "Source: "
             article?.let {
-                Glide.with(context).load(article.url).into(itemView.article_image)
+                Glide.with(context).load(article.urlToImage).into(itemView.article_image)
                 itemView.article_title.text = article.title
                 itemView.article_description.text = article.description
-                itemView.article_source.text = article.source!!.name
+                pref += article.source.name
+                itemView.article_source.text = pref
+
+                itemView.article_publish_date.text = getFormattedDate(article.publishedAt)
             }
         }
 
@@ -56,9 +65,9 @@ class NewsAdapter(
         }
     }
 
-    private val differ = AsyncListDiffer(this, differCallback)
+    val differ = AsyncListDiffer(this, differCallback)
 
-    interface ArticleInteraction{
+    interface ArticleInteraction {
         fun onItemClicked(article: Article)
     }
 }
