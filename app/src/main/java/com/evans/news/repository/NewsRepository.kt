@@ -8,4 +8,7 @@ class NewsRepository(
 ) {
     suspend fun getBreakingNews(countryCode: String, pageNumber: Int) =
         RetroClient.api.getBreakingNews(countryCode, pageNumber)
+
+    suspend fun searchNews(searchQuery: String, pageNumber: Int) =
+        RetroClient.api.searchNews(searchQuery, pageNumber)
 }
